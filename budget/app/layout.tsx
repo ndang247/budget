@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
+import { SheetProvider } from "@/providers/sheet-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +26,11 @@ export default function RootLayout({
             Even though Query Provider is marked use client but its children here not all is client component
             when passing component as children it can still be safely server component 
           */}
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <SheetProvider />
+            <Toaster />
+            {children}
+          </QueryProvider>
         </body>
       </html>
     </ClerkProvider>
