@@ -1,19 +1,20 @@
 "use client";
 import { Button } from "@/components/ui/button";
-
-import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const { onOpen } = useNewAccount();
-  const { data: accounts, isLoading } = useGetAccounts();
+  const router = useRouter();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
   return (
-    <div>
-      <Button onClick={onOpen}>Add an account</Button>
-    </div>
+    <>
+      <div className="pt-1">
+        <Button onClick={() => router.push("/accounts")}>Go to accounts</Button>
+      </div>
+      <div className="pt-1">
+        <Button onClick={() => router.push("/categories")}>
+          Go to categories
+        </Button>
+      </div>
+    </>
   );
 }

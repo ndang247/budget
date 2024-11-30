@@ -37,7 +37,7 @@ function getQueryClient() {
 }
 
 type Props = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
 export function QueryProvider({ children }: Props) {
